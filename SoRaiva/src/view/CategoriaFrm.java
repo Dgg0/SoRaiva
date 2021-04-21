@@ -6,19 +6,19 @@
 package view;
 
 import javax.swing.JOptionPane;
-import modelo.dao.AutorDao;
-import modelo.entidade.Autor;
+import modelo.dao.CategoriaDao;
+import modelo.entidade.Categoria;
 
 /**
  *
  * @author Diogo
  */
-public class AutorFrm extends javax.swing.JDialog {
+public class CategoriaFrm extends javax.swing.JDialog {
 
     /**
-     * Creates new form AutorFrm
+     * Creates new form CategoriaFrm
      */
-    public AutorFrm(java.awt.Frame parent, boolean modal) {
+    public CategoriaFrm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.iniciarFrm();
@@ -33,14 +33,17 @@ public class AutorFrm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TxfId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         TxfNome = new javax.swing.JTextField();
         BtnDeletar = new javax.swing.JButton();
-        BtnNovo = new javax.swing.JButton();
         BtnSalvar = new javax.swing.JButton();
+        BtnNovo = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -50,11 +53,6 @@ public class AutorFrm extends javax.swing.JDialog {
         jLabel1.setText("ID");
 
         TxfId.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        TxfId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxfIdActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Nome");
@@ -71,10 +69,10 @@ public class AutorFrm extends javax.swing.JDialog {
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TxfId, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TxfId)
                     .addComponent(TxfNome))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,15 +83,22 @@ public class AutorFrm extends javax.swing.JDialog {
                     .addComponent(TxfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(TxfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(TxfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         BtnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete.png"))); // NOI18N
         BtnDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnDeletarActionPerformed(evt);
+            }
+        });
+
+        BtnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/save.png"))); // NOI18N
+        BtnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSalvarActionPerformed(evt);
             }
         });
 
@@ -104,40 +109,32 @@ public class AutorFrm extends javax.swing.JDialog {
             }
         });
 
-        BtnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/save.png"))); // NOI18N
-        BtnSalvar.setToolTipText("");
-        BtnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSalvarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BtnDeletar)
                         .addGap(18, 18, 18)
                         .addComponent(BtnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 304, Short.MAX_VALUE)
                         .addComponent(BtnNovo)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtnDeletar)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BtnSalvar)
                     .addComponent(BtnNovo)
-                    .addComponent(BtnSalvar))
+                    .addComponent(BtnDeletar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -145,17 +142,13 @@ public class AutorFrm extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TxfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxfIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxfIdActionPerformed
+    private void BtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalvarActionPerformed
+        this.botaoSalvar();
+    }//GEN-LAST:event_BtnSalvarActionPerformed
 
     private void BtnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeletarActionPerformed
         this.botaoDeletar();
     }//GEN-LAST:event_BtnDeletarActionPerformed
-
-    private void BtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalvarActionPerformed
-        this.botaoSalvar();
-    }//GEN-LAST:event_BtnSalvarActionPerformed
 
     private void BtnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNovoActionPerformed
         this.botaoNovo();
@@ -178,20 +171,20 @@ public class AutorFrm extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AutorFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CategoriaFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AutorFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CategoriaFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AutorFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CategoriaFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AutorFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CategoriaFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AutorFrm dialog = new AutorFrm(new javax.swing.JFrame(), true);
+                CategoriaFrm dialog = new CategoriaFrm(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -209,16 +202,17 @@ public class AutorFrm extends javax.swing.JDialog {
     private javax.swing.JButton BtnSalvar;
     private javax.swing.JTextField TxfId;
     private javax.swing.JTextField TxfNome;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-    
-    private Autor autor;
-    private AutorDao autorDao;
-    
+
+    private Categoria categoria;
+    private CategoriaDao categoriaDao;
+
     private void iniciarFrm() {
-        autor = new Autor();
+        categoria = new Categoria();
         BtnDeletar.setEnabled(false);
         BtnSalvar.setEnabled(true);
         BtnNovo.setEnabled(false);
@@ -226,7 +220,7 @@ public class AutorFrm extends javax.swing.JDialog {
     }
     
     private void obterDados() {
-        autor.setNome(TxfNome.getText());
+        categoria.setNome(TxfNome.getText());
     }
     
     private void limparDados() {
@@ -235,66 +229,65 @@ public class AutorFrm extends javax.swing.JDialog {
     }
     
     private void mostrarDados() {
-        if (autor != null) {
-            if (autor.getId() != null) {
-               TxfId.setText(String.valueOf(autor.getId()));
+        if (categoria != null) {
+            if (categoria.getId() != null) {
+                TxfId.setText(String.valueOf(categoria.getId()));
             } else {
                 TxfId.setText("");
             }
-            TxfNome.setText(autor.getNome());
+            TxfNome.setText(categoria.getNome());
         } else {
             this.limparDados();
         }
         
-        if (autor.getId() != null) {
-            BtnNovo.setEnabled(true);
-            BtnSalvar.setEnabled(true);
+        if (categoria.getId() != null) {
             BtnDeletar.setEnabled(true);
-        } else {
-            BtnNovo.setEnabled(false);
             BtnSalvar.setEnabled(true);
+            BtnNovo.setEnabled(true);
+        } else {
             BtnDeletar.setEnabled(false);
+            BtnSalvar.setEnabled(true);
+            BtnNovo.setEnabled(false);
         }
     }
     
-    public void setAutor(Autor autor) {
-        this.autor = autor;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
     
     private void botaoNovo() {
-        autor = new Autor();
-        BtnNovo.setEnabled(false);
-        BtnSalvar.setEnabled(true);
+        categoria = new Categoria();
         BtnDeletar.setEnabled(false);
+        BtnSalvar.setEnabled(true);
+        BtnNovo.setEnabled(false);
         this.mostrarDados();
     }
     
     private void botaoSalvar() {
-        if (autorDao == null) {
-            autorDao = new AutorDao();
+        if (categoriaDao == null) {
+            categoriaDao = new CategoriaDao();
         }
         this.obterDados();
         
-        if (autor.getNome() == null || autor.getNome().equals("")) {
-            JOptionPane.showMessageDialog(null, "Insira o Nome do Autor. ");
+        if ((categoria.getNome() == null) || (categoria.getNome().equals(""))) {
+            JOptionPane.showMessageDialog(null, "Insira o nome da Categoria. ");
         } else {
-            this.autorDao.save(autor);
+            categoriaDao.save(categoria);
             this.botaoNovo();
         }
     }
     
     private void botaoDeletar() {
-        if (autorDao == null) {
-            autorDao = new AutorDao();
+        if (categoriaDao == null) {
+            categoriaDao = new CategoriaDao();
         }
-        autorDao.delete(autor);
+        categoriaDao.delete(categoria);
         
-        BtnNovo.setEnabled(false);
-        BtnSalvar.setEnabled(true);
         BtnDeletar.setEnabled(false);
-        this.autor = new Autor();
+        BtnSalvar.setEnabled(true);
+        BtnNovo.setEnabled(false);
+        this.categoria = new Categoria();
         
         this.limparDados();
     }
-    
 }

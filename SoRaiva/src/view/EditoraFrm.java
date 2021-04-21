@@ -6,19 +6,19 @@
 package view;
 
 import javax.swing.JOptionPane;
-import modelo.dao.AutorDao;
-import modelo.entidade.Autor;
+import modelo.dao.EditoraDao;
+import modelo.entidade.Editora;
 
 /**
  *
  * @author Diogo
  */
-public class AutorFrm extends javax.swing.JDialog {
+public class EditoraFrm extends javax.swing.JDialog {
 
     /**
-     * Creates new form AutorFrm
+     * Creates new form EditoraFrm
      */
-    public AutorFrm(java.awt.Frame parent, boolean modal) {
+    public EditoraFrm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.iniciarFrm();
@@ -39,8 +39,8 @@ public class AutorFrm extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         TxfNome = new javax.swing.JTextField();
         BtnDeletar = new javax.swing.JButton();
-        BtnNovo = new javax.swing.JButton();
         BtnSalvar = new javax.swing.JButton();
+        BtnNovo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -50,11 +50,6 @@ public class AutorFrm extends javax.swing.JDialog {
         jLabel1.setText("ID");
 
         TxfId.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        TxfId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxfIdActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Nome");
@@ -71,10 +66,10 @@ public class AutorFrm extends javax.swing.JDialog {
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TxfId, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TxfId)
                     .addComponent(TxfNome))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,18 +92,17 @@ public class AutorFrm extends javax.swing.JDialog {
             }
         });
 
+        BtnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/save.png"))); // NOI18N
+        BtnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSalvarActionPerformed(evt);
+            }
+        });
+
         BtnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/novo.png"))); // NOI18N
         BtnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnNovoActionPerformed(evt);
-            }
-        });
-
-        BtnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/save.png"))); // NOI18N
-        BtnSalvar.setToolTipText("");
-        BtnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSalvarActionPerformed(evt);
             }
         });
 
@@ -118,15 +112,15 @@ public class AutorFrm extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BtnDeletar)
                         .addGap(18, 18, 18)
                         .addComponent(BtnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
                         .addComponent(BtnNovo)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,18 +130,14 @@ public class AutorFrm extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BtnDeletar)
-                    .addComponent(BtnNovo)
-                    .addComponent(BtnSalvar))
+                    .addComponent(BtnSalvar)
+                    .addComponent(BtnNovo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TxfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxfIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxfIdActionPerformed
 
     private void BtnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeletarActionPerformed
         this.botaoDeletar();
@@ -178,20 +168,20 @@ public class AutorFrm extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AutorFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditoraFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AutorFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditoraFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AutorFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditoraFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AutorFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditoraFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AutorFrm dialog = new AutorFrm(new javax.swing.JFrame(), true);
+                EditoraFrm dialog = new EditoraFrm(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -213,20 +203,20 @@ public class AutorFrm extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-    
-    private Autor autor;
-    private AutorDao autorDao;
+
+    private Editora editora;
+    private EditoraDao editoraDao;
     
     private void iniciarFrm() {
-        autor = new Autor();
-        BtnDeletar.setEnabled(false);
-        BtnSalvar.setEnabled(true);
+        editora = new Editora();
         BtnNovo.setEnabled(false);
+        BtnSalvar.setEnabled(true);
+        BtnDeletar.setEnabled(false);
         TxfId.setEditable(false);
     }
     
     private void obterDados() {
-        autor.setNome(TxfNome.getText());
+        editora.setNome(TxfNome.getText());
     }
     
     private void limparDados() {
@@ -235,66 +225,67 @@ public class AutorFrm extends javax.swing.JDialog {
     }
     
     private void mostrarDados() {
-        if (autor != null) {
-            if (autor.getId() != null) {
-               TxfId.setText(String.valueOf(autor.getId()));
+        if (editora != null) {
+            if (editora.getId() != null) {
+                TxfId.setText(String.valueOf(editora.getId()));
             } else {
                 TxfId.setText("");
             }
-            TxfNome.setText(autor.getNome());
+            TxfNome.setText(editora.getNome());
         } else {
             this.limparDados();
         }
-        
-        if (autor.getId() != null) {
-            BtnNovo.setEnabled(true);
-            BtnSalvar.setEnabled(true);
-            BtnDeletar.setEnabled(true);
-        } else {
+         
+        if (editora.getId() != null) {
             BtnNovo.setEnabled(false);
             BtnSalvar.setEnabled(true);
             BtnDeletar.setEnabled(false);
+        } else {
+            BtnNovo.setEnabled(true);
+            BtnSalvar.setEnabled(true);
+            BtnDeletar.setEnabled(true);
         }
     }
     
-    public void setAutor(Autor autor) {
-        this.autor = autor;
+    public void setEditora(Editora editora) {
+        this.editora = editora;
     }
     
     private void botaoNovo() {
-        autor = new Autor();
-        BtnNovo.setEnabled(false);
-        BtnSalvar.setEnabled(true);
-        BtnDeletar.setEnabled(false);
-        this.mostrarDados();
+       editora = new Editora();
+       BtnNovo.setEnabled(false);
+       BtnSalvar.setEnabled(true);
+       BtnDeletar.setEnabled(false);
+       this.mostrarDados();
     }
     
     private void botaoSalvar() {
-        if (autorDao == null) {
-            autorDao = new AutorDao();
+        if (editoraDao == null) {
+            editoraDao = new EditoraDao();
         }
+        
         this.obterDados();
         
-        if (autor.getNome() == null || autor.getNome().equals("")) {
-            JOptionPane.showMessageDialog(null, "Insira o Nome do Autor. ");
+        if ((editora.getNome() == null) || (editora.getNome().equals(""))) {
+            JOptionPane.showMessageDialog(null, "Informe o nome da Editora. ");
         } else {
-            this.autorDao.save(autor);
+            editoraDao.save(editora);
             this.botaoNovo();
         }
     }
     
     private void botaoDeletar() {
-        if (autorDao == null) {
-            autorDao = new AutorDao();
+        if (editoraDao == null) {
+            editoraDao = new EditoraDao();
         }
-        autorDao.delete(autor);
+        
+        editoraDao.delete(editora);
         
         BtnNovo.setEnabled(false);
         BtnSalvar.setEnabled(true);
         BtnDeletar.setEnabled(false);
-        this.autor = new Autor();
+        editora = new Editora();
         
         this.limparDados();
     }
-    
 }

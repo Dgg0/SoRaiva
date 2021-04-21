@@ -3,16 +3,16 @@ package modelo.entidade;
 public class Livro {
 	
 	private Integer id;
-	private int codigo;
+	private Integer codigo;
 	private String nome;
 	private String descricao;
-	private double preco;
+	private Double preco;
 	private Categoria categoria;
 	private Autor autor;
 	private Editora editora;
 	private Idioma idioma;
-	private int anoPublicacao;
-	private int qtdePaginas;
+	private Integer anoPublicacao;
+	private Integer qtdePaginas;
 	
 	public Integer getId() {
 		return id;
@@ -22,11 +22,11 @@ public class Livro {
 		this.id = id;
 	}
 	
-	public int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 	
-	public void setCodigo(int codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 	
@@ -46,11 +46,11 @@ public class Livro {
 		this.descricao = descricao;
 	}
 	
-	public double getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 	
-	public void setPreco(double preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 	
@@ -86,19 +86,19 @@ public class Livro {
 		this.idioma = idioma;
 	}
 	
-	public int getAnoPublicacao() {
+	public Integer getAnoPublicacao() {
 		return anoPublicacao;
 	}
 	
-	public void setAnoPublicacao(int anoPublicacao) {
+	public void setAnoPublicacao(Integer anoPublicacao) {
 		this.anoPublicacao = anoPublicacao;
 	}
 	
-	public int getQtdePaginas() {
+	public Integer getQtdePaginas() {
 		return qtdePaginas;
 	}
 	
-	public void setQtdePaginas(int qtdePaginas) {
+	public void setQtdePaginas(Integer qtdePaginas) {
 		this.qtdePaginas = qtdePaginas;
 	}
 

@@ -41,10 +41,25 @@ public class IdiomaDao {
 			JOptionPane.showMessageDialog(null, "Erro ao inserir idioma: " + ex.getMessage());
 		}
 	}
-	
-	public void update(Idioma idioma) {
-		this.iniciarConexaoDB();
-		String sql = "DELETE FROM idioma WHERE id = ?";
+        
+        public void update(Idioma idioma) {
+            this.iniciarConexaoDB();
+            String sql = "UPDATE TABLE idioma SET nome = ? WHERE id = ?";
+            
+                try {
+                    PreparedStatement pstmt = con.prepareStatement(sql);
+                    pstmt.setString(1, idioma.getNome());
+                    pstmt.setInt(2, idioma.getId());
+                    pstmt.execute();
+                    JOptionPane.showMessageDialog(null, "Idioma atualizado com sucesso. ");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao atualizar idioma: " + ex.getMessage());
+                }
+        }
+        
+	public void delete(Idioma idioma) {
+            this.iniciarConexaoDB();
+            String sql = "DELETE FROM idioma WHERE id = ?";
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
